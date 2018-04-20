@@ -10,7 +10,7 @@ At the moment the following types are supported:
 Includes `serizlizers` (based on JMS/Serializer) and `param converters`
 
 
-#Examples
+# Examples
 
 ### ParamConverter
 
@@ -45,7 +45,7 @@ Hello! Ip is 127.0.0.1
 ```
 
 ```bash
-$ curl -i  -s -H'Accept:application/json'  http://127.0.0.1:8000/ip/incorrect_data
+$ curl -i  -s http://127.0.0.1:8000/ip/127.0.0.1.1
 HTTP/1.0 400
 
 Can not cast value to Ip address. '127.0.0.1.1' is not an valid IPv4/v6 address
