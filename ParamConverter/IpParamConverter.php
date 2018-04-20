@@ -1,10 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: hett
- * Date: 14.03.18
- * Time: 13:45
+ * User: Anton Buz (TheHett)
+ * Date: 26.03.2018
+ * Time: 21:24
  */
+
+declare(strict_types=1);
 
 namespace ValueObjectsBundle\ParamConverter;
 

@@ -1,10 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: hettb
- * Date: 20.04.2018
- * Time: 1:38
+ * User: Anton Buz (TheHett)
+ * Date: 26.03.2018
+ * Time: 21:24
  */
+
+declare(strict_types=1);
 
 namespace ValueObjectsBundle;
 
