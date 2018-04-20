@@ -1,0 +1,12 @@
+parameters:
+
+services:
+    ip_serialization_handler:
+        class: ValueObjectsBundle\Serializer\IpHandler
+        tags:
+            - { name: jms_serializer.subscribing_handler }
+
+    App\ObjectType\Ip:
+        class: ValueObjectsBundle\ParamConverter\IpParamConverter
+        tags:
+            - { name: request.param_converter, converter: ip_converter }
