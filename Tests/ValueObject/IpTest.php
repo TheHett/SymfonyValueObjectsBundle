@@ -19,10 +19,10 @@ class IpTest extends TestCase
      */
     public function testConvert()
     {
-        $ip = new Ip("127.0.0.1");
-        $this->assertEquals(inet_pton("127.0.0.1"), $ip->getBinary(), "getBinary() must return binary value");
-        $this->assertEquals("127.0.0.1", (string)$ip, "Cast to string IP must be an printable value");
-        $this->assertEquals("127.0.0.1", $ip->getPrintable(), "getPrintable() must return printable value");
+        $ip = new Ip('127.0.0.1');
+        $this->assertEquals(inet_pton('127.0.0.1'), $ip->getBinary(), 'getBinary() must return `Ip` in binary format');
+        $this->assertEquals('127.0.0.1', (string)$ip, 'Casted to string `Ip` must be an printable value');
+        $this->assertEquals('127.0.0.1', $ip->getPrintable(), 'getPrintable() must return printable value');
     }
 
     /**
@@ -31,7 +31,7 @@ class IpTest extends TestCase
      */
     public function testIncorrectData()
     {
-        new Ip("127.0.0.1.1");
+        new Ip('127.0.0.1.1');
     }
 
 }
