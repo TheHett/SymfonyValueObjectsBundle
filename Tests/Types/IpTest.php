@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests;
+namespace App\Tests\Types;
 
 use PHPUnit\Framework\TestCase;
 use ValueObjectsBundle\Type\Ip;
@@ -17,7 +17,7 @@ class IpTest extends TestCase
     /**
      * @throws \ValueObjectsBundle\Exception\TypeCastException
      */
-    public function testConvert()
+    public function testMain(): void
     {
         $ip = new Ip('127.0.0.1');
         $this->assertEquals(inet_pton('127.0.0.1'), $ip->getBinary(), 'getBinary() must return `Ip` in binary format');
@@ -29,7 +29,7 @@ class IpTest extends TestCase
      * @expectedException \ValueObjectsBundle\Exception\TypeCastException
      * @throws \ValueObjectsBundle\Exception\TypeCastException
      */
-    public function testIncorrectData()
+    public function testIncorrectData(): void
     {
         new Ip('127.0.0.1.1');
     }

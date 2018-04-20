@@ -6,7 +6,17 @@ services:
         tags:
             - { name: jms_serializer.subscribing_handler }
 
+    email_serialization_handler:
+        class: ValueObjectsBundle\Serializer\EMailHandler
+        tags:
+            - { name: jms_serializer.subscribing_handler }
+
     App\ObjectType\Ip:
         class: ValueObjectsBundle\ParamConverter\IpParamConverter
         tags:
             - { name: request.param_converter, converter: ip_converter }
+
+    App\ObjectType\EMail:
+        class: ValueObjectsBundle\ParamConverter\EMailParamConverter
+        tags:
+            - { name: request.param_converter, converter: email_converter }

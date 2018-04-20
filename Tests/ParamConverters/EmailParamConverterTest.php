@@ -7,26 +7,26 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\ParamConverter;
+namespace App\Tests\ParamConverters;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use ValueObjectsBundle\ParamConverter\IpParamConverter;
-use ValueObjectsBundle\Type\Ip;
+use ValueObjectsBundle\ParamConverter\EMailParamConverter;
+use ValueObjectsBundle\Type\EMail;
 
-class IpParamConverterTest extends TestCase
+class EmailParamConverterTest extends TestCase
 {
-    /** @var IpParamConverter */
+    /** @var EMailParamConverter */
     private $converter;
 
     public function setUp()
     {
-        $this->converter = new IpParamConverter();
+        $this->converter = new EMailParamConverter();
     }
 
     public function testSupports()
     {
-        $config = $this->createConfiguration(Ip::class);
+        $config = $this->createConfiguration(EMail::class);
         $this->assertTrue($this->converter->supports($config));
 
         $config = $this->createConfiguration(__CLASS__);
@@ -36,35 +36,24 @@ class IpParamConverterTest extends TestCase
         $this->assertFalse($this->converter->supports($config));
     }
 
-    public function testApplyIpv4()
+    public function testApplyEMail()
     {
-        $request = new Request([], [], ['ip' => '127.0.0.1']);
-        $config = $this->createConfiguration(Ip::class, 'ip');
+        $request = new Request([], [], ['email' => 'test@example.test']);
+        $config = $this->createConfiguration(EMail::class, 'email');
 
         $this->converter->apply($request, $config);
 
-        $this->assertInstanceOf(Ip::class, $request->attributes->get('ip'));
-        $this->assertEquals('127.0.0.1', $request->attributes->get('ip')->getPrintable());
-    }
-
-    public function testApplyIpv6()
-    {
-        $request = new Request([], [], ['ip' => '::1']);
-        $config = $this->createConfiguration(Ip::class, 'ip');
-
-        $this->converter->apply($request, $config);
-
-        $this->assertInstanceOf(Ip::class, $request->attributes->get('ip'));
-        $this->assertEquals('::1', $request->attributes->get('ip')->getPrintable());
+        $this->assertInstanceOf(EMail::class, $request->attributes->get('email'));
+        $this->assertEquals('test@example.test', $request->attributes->get('email')->getValue());
     }
 
     /**
      * @expectedException \Symfony\Component\HttpKernel\Exception\BadRequestHttpException
      */
-    public function testApplyInvalidDate404Exception()
+    public function testApplyInvalidEMail404Exception()
     {
-        $request = new Request([], [], ['ip' => '127.0.0.1.1']);
-        $config = $this->createConfiguration(Ip::class, 'ip');
+        $request = new Request([], [], ['email' => 'incorrectEMailFormat@@example.test']);
+        $config = $this->createConfiguration(EMail::class, 'email');
 
         $this->converter->apply($request, $config);
     }
