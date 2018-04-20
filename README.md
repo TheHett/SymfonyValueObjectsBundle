@@ -14,7 +14,7 @@ Includes `serizlizers` (based on JMS/Serializer) and `param converters`
 ### ParamConverter
 
 
-```
+```php
     /**
      * @Route("/ip/{ip}")
      * @param Ip $ip
@@ -31,11 +31,10 @@ Includes `serizlizers` (based on JMS/Serializer) and `param converters`
         
         return new Response("Requested ip is {$ip}");
     }
-
 ```
 
 
-```
+```bash
 $ curl -i  -s  http://127.0.0.1:8000/ip/127.0.0.1
 HTTP/1.1 200 OK
 ... other headers ...
@@ -44,7 +43,7 @@ Hello! Ip is 127.0.0.1
 
 ```
 
-```
+```bash
 $ curl -i  -s -H'Accept:application/json'  http://127.0.0.1:8000/ip/incorrect_data
 HTTP/1.0 400
 
