@@ -1,5 +1,5 @@
 {
-  "name": "symfony-value-objects-bundle",
+  "name": "the-hett/symfony-value-objects-bundle",
   "type": "symfony-bundle",
   "description": "Symfony ValueObjects Bundle",
   "keywords": [
