@@ -1,5 +1,5 @@
 {
-  "name": "TheHett/symfony-value-objects-bundle",
+  "name": "symfony-value-objects-bundle",
   "type": "symfony-bundle",
   "description": "Symfony ValueObjects Bundle",
   "keywords": [
@@ -31,7 +31,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "TheHett\\ValueObjectsBundle\\Tests\\": "/Tests/"
+      "ValueObjectsBundle\\Tests\\": "/Tests/"
     }
   },
   "extra": {
