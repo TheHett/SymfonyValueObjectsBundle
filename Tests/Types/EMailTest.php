@@ -28,9 +28,18 @@ class EMailTest extends TestCase
      * @expectedException \ValueObjectsBundle\Exception\TypeCastException
      * @throws \ValueObjectsBundle\Exception\TypeCastException
      */
-    public function testIncorrectData(): void
+    public function testIncorrectValue(): void
     {
         new EMail('incorrectEMailFormat@@example.test');
+    }
+
+    /**
+     * @expectedException \ValueObjectsBundle\Exception\TypeCastException
+     * @throws \ValueObjectsBundle\Exception\TypeCastException
+     */
+    public function testEmptyValue(): void
+    {
+        new EMail('');
     }
 
 }

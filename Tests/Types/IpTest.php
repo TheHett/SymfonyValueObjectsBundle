@@ -29,9 +29,18 @@ class IpTest extends TestCase
      * @expectedException \ValueObjectsBundle\Exception\TypeCastException
      * @throws \ValueObjectsBundle\Exception\TypeCastException
      */
-    public function testIncorrectData(): void
+    public function testIncorrectValue(): void
     {
         new Ip('127.0.0.1.1');
+    }
+
+    /**
+     * @expectedException \ValueObjectsBundle\Exception\TypeCastException
+     * @throws \ValueObjectsBundle\Exception\TypeCastException
+     */
+    public function testEmptyValue(): void
+    {
+        new Ip('');
     }
 
 }

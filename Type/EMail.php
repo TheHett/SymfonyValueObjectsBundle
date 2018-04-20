@@ -24,7 +24,7 @@ class EMail
      */
     public function __construct(string $value)
     {
-        if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+        if (false === filter_var($value, FILTER_VALIDATE_EMAIL)) {
             throw new TypeCastException("Can not cast value to EMail address. '{$value}' is not an valid EMail address");
         }
         $this->value = $value;

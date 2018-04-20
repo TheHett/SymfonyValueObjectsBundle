@@ -24,7 +24,7 @@ class Ip
      */
     public function __construct(string $value)
     {
-        if (!filter_var($value, FILTER_VALIDATE_IP)) {
+        if (false === filter_var($value, FILTER_VALIDATE_IP)) {
             throw new TypeCastException("Can not cast value to Ip address. '{$value}' is not an valid IPv4/v6 address");
         }
         $this->value = inet_pton($value);
