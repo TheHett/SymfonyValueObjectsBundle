@@ -2,17 +2,20 @@
 
 Provides the ability to use popular entity as data types.
 
-At the moment the following types are supported:
+At the moment next following types are supported:
 - Ip
 - EMail
 
 
 Includes `serizlizers` (based on JMS/Serializer) and `param converters`
 
+## Installation
 
-# Examples
+`composer require the-hett/symfony-value-objects-bundle`
 
-### ParamConverter
+## Examples
+
+#### ParamConverter
 
 
 ```php
