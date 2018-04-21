@@ -5,6 +5,7 @@ Provides the ability to use popular entity as data types.
 At the moment next following types are supported:
 - Ip
 - EMail
+- Integer
 
 
 Includes `serizlizers` (based on JMS/Serializer) and `param converters`
