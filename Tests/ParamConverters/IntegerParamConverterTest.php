@@ -11,22 +11,22 @@ namespace App\Tests\ParamConverters;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use ValueObjectsBundle\ParamConverter\EMailParamConverter;
-use ValueObjectsBundle\Type\EMail;
+use ValueObjectsBundle\ParamConverter\IntegerParamConverter;
+use ValueObjectsBundle\Type\Integer;
 
-class EmailParamConverterTest extends TestCase
+class IntegerParamConverterTest extends TestCase
 {
-    /** @var EMailParamConverter */
+    /** @var IntegerParamConverter */
     private $converter;
 
     public function setUp()
     {
-        $this->converter = new EMailParamConverter();
+        $this->converter = new IntegerParamConverter();
     }
 
     public function testSupports()
     {
-        $config = $this->createConfiguration(EMail::class);
+        $config = $this->createConfiguration(Integer::class);
         $this->assertTrue($this->converter->supports($config));
 
         $config = $this->createConfiguration(__CLASS__);
@@ -36,24 +36,25 @@ class EmailParamConverterTest extends TestCase
         $this->assertFalse($this->converter->supports($config));
     }
 
-    public function testApplyEMail()
+    public function testApplyValidIntegerValue()
     {
-        $request = new Request([], [], ['email' => 'test@example.test']);
-        $config = $this->createConfiguration(EMail::class, 'email');
+        $request = new Request([], [], ['integer' => '127']);
+        $config = $this->createConfiguration(Integer::class, 'integer');
 
         $this->converter->apply($request, $config);
 
-        $this->assertInstanceOf(EMail::class, $request->attributes->get('email'));
-        $this->assertEquals('test@example.test', $request->attributes->get('email')->getValue());
+        $this->assertInstanceOf(Integer::class, $request->attributes->get('integer'));
+        $this->assertEquals(127, $request->attributes->get('integer')->getValue());
     }
+
 
     /**
      * @expectedException \Symfony\Component\HttpKernel\Exception\BadRequestHttpException
      */
-    public function testApplyInvalidEMail400Exception()
+    public function testApplyInvalidIntegerValue400Exception()
     {
-        $request = new Request([], [], ['email' => 'incorrectEMailFormat@@example.test']);
-        $config = $this->createConfiguration(EMail::class, 'email');
+        $request = new Request([], [], ['integer' => '127.1']);
+        $config = $this->createConfiguration(Integer::class, 'integer');
 
         $this->converter->apply($request, $config);
     }

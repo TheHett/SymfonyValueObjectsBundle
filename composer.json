@@ -17,7 +17,8 @@
     "sensio/framework-extra-bundle": "^5.1"
   },
   "require-dev": {
-    "phpunit/phpunit": "^6.4"
+    "phpunit/phpunit": "^6.4",
+    "phpstan/phpstan": "^0.9"
   },
   "conflict": {
   },

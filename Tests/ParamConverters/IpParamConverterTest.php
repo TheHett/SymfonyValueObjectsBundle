@@ -61,7 +61,7 @@ class IpParamConverterTest extends TestCase
     /**
      * @expectedException \Symfony\Component\HttpKernel\Exception\BadRequestHttpException
      */
-    public function testApplyInvalidIp404Exception()
+    public function testApplyInvalidIp400Exception()
     {
         $request = new Request([], [], ['ip' => '127.0.0.1.1']);
         $config = $this->createConfiguration(Ip::class, 'ip');
