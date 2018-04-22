@@ -6,7 +6,7 @@ At the moment next following types are supported:
 - Ip
 - EMail
 - Integer
-
+- Boolean
 
 Includes handlers for `JMS/Serializer` and param converters
 
