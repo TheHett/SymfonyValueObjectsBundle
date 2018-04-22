@@ -13,12 +13,12 @@ use ValueObjectsBundle\Exception\TypeCastException;
 
 class Integer
 {
-    /** @var int value */
+    /** @var mixed value */
     private $value;
 
     /**
      * Integer constructor.
-     * @param int|string|float $value
+     * @param int|string|float|null $value
      * @throws TypeCastException
      */
     public function __construct($value)
@@ -32,12 +32,12 @@ class Integer
                 throw new TypeCastException($e->getMessage(), 0, $e);
             }
             if (filter_var($value, FILTER_VALIDATE_INT) === false) {
-                throw new TypeCastException("Can not cast value to Integer. '{$value}' is not an valid integer");
+                throw new TypeCastException("Can not cast value to Integer. '{$value}' is not an valid Integer");
             }
             if (bccomp($value, (string)PHP_INT_MAX, 0) === 1 || bccomp($value, (string)PHP_INT_MIN, 0) === -1) {
                 $min = PHP_INT_MIN;
                 $max = PHP_INT_MAX;
-                throw new TypeCastException("Value '{$value}' is out of range [{$min}, {$max}]");
+                throw new TypeCastException("Value '{$value}' is out of possibly range [{$min}, {$max}]");
             }
             $this->value = (int)$value;
         }

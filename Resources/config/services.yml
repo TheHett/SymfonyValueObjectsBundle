@@ -16,6 +16,11 @@ services:
         tags:
             - { name: jms_serializer.subscribing_handler }
 
+    boolean_serialization_handler:
+        class: ValueObjectsBundle\Serializer\BooleanHandler
+        tags:
+            - { name: jms_serializer.subscribing_handler }
+
     App\ObjectType\Ip:
         class: ValueObjectsBundle\ParamConverter\IpParamConverter
         tags:
@@ -29,4 +34,9 @@ services:
     App\ObjectType\Integer:
         class: ValueObjectsBundle\ParamConverter\IntegerParamConverter
         tags:
-            - { name: request.param_converter, converter: email_converter }
+            - { name: request.param_converter, converter: integer_converter }
+
+    App\ObjectType\Boolean:
+        class: ValueObjectsBundle\ParamConverter\BooleanParamConverter
+        tags:
+            - { name: request.param_converter, converter: boolean_converter }

@@ -20,9 +20,9 @@ class IpTest extends TestCase
     public function testMain(): void
     {
         $ip = new Ip('127.0.0.1');
-        $this->assertEquals(inet_pton('127.0.0.1'), $ip->getBinary(), 'getBinary() must return `Ip` in binary format');
-        $this->assertEquals('127.0.0.1', (string)$ip, 'Casted to string `Ip` must be an printable value');
-        $this->assertEquals('127.0.0.1', $ip->getPrintable(), 'getPrintable() must return printable value');
+        $this->assertSame(inet_pton('127.0.0.1'), $ip->getBinary(), 'getBinary() must return `Ip` in binary format');
+        $this->assertSame('127.0.0.1', (string)$ip, 'Casted to string `Ip` must be an printable value');
+        $this->assertSame('127.0.0.1', $ip->getPrintable(), 'getPrintable() must return printable value');
     }
 
     /**

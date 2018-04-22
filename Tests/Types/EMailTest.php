@@ -20,8 +20,8 @@ class EMailTest extends TestCase
     public function testMain(): void
     {
         $email = new EMail('test@example.test');
-        $this->assertEquals('test@example.test', $email->getValue(), 'getValue() must return the original value');
-        $this->assertEquals('test@example.test', (string)$email, 'Casted to string `EMail` must be the original value');
+        $this->assertSame('test@example.test', $email->getValue(), 'getValue() must return the original value');
+        $this->assertSame('test@example.test', (string)$email, 'Casted to string `EMail` must be the original value');
     }
 
     /**

@@ -8,7 +8,7 @@ At the moment next following types are supported:
 - Integer
 
 
-Includes serializers for `JMS/Serializer` and param converters
+Includes handlers for `JMS/Serializer` and param converters
 
 ## Installation
 

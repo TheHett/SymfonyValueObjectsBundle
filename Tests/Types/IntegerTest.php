@@ -20,9 +20,8 @@ class IntegerTest extends TestCase
     public function testMain(): void
     {
         $integer = new Integer('127');
-        $this->assertEquals(127, $integer->getValue(), 'getValue() must correct integer value');
-        $this->assertEquals(127, (string)$integer, 'Casted to string `Integer` must be correct integer value');
-        $this->assertTrue(\is_int($integer->getValue()), "getValue() must return `int` type");
+        $this->assertSame(127, $integer->getValue(), 'getValue() must correct integer value');
+        $this->assertSame('127', (string)$integer, 'Casted to string `Integer` must be correct integer value');
     }
 
     /**
@@ -31,8 +30,8 @@ class IntegerTest extends TestCase
     public function testNegative(): void
     {
         $integer = new Integer('-127');
-        $this->assertEquals(-127, $integer->getValue(), 'getValue() must correct integer value');
-        $this->assertEquals(-127, (string)$integer, 'Casted to string `Integer` must be correct integer value');
+        $this->assertSame('-127', (string)$integer, 'Casted to string `Integer` must be correct integer value');
+        $this->assertSame(-127, $integer->getValue(), 'getValue() must correct integer value');
     }
 
     /**
