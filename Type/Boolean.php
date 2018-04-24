@@ -30,7 +30,8 @@ class Boolean
         } else {
             $value = strtolower((string)$value);
             if (false === self::validate($value)) {
-                throw new TypeCastException("Can not cast value to Boolean. '{$value}' is not an valid Boolean");
+                throw new TypeCastException('Can not cast value to Boolean. '
+                    . "'{$value}' is not an valid Boolean");
             }
             $this->value = \filter_var($value, FILTER_VALIDATE_BOOLEAN);
         }
@@ -54,7 +55,7 @@ class Boolean
 
     /**
      * @param string $value
-     * @return bool true if `value` is valid boolean (`true`, `false`, `on`, `off`, `0`, `1`)otherwise return false
+     * @return bool true if `value` is valid boolean (`true`, `false`, `on`, `off`, `0`, `1`) otherwise return false
      */
     public static function validate($value): bool
     {
